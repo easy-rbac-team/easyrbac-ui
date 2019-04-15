@@ -7,17 +7,40 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path: '/',
-      name: 'home',
-      component: Home
+      path: "/user",
+      component: () => import("./component/user/userManage.vue"),
+      children: [{
+        path: "edit/:userId",
+        component: () => import("./component/user/editUser.vue")
+      }]
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
+      path: '/role',
+      component: () => import("./component/role/roleManage.vue")
+    },
+    {
+      path:"/role/roleResource",
+      component:() => import('./component/role/resource/roleResourceManage.vue')
+    },
+    {
+      path:'/application',
+      component:()=> import('./component/application/applicationManage.vue')
+    },
+    {
+      path:'/app/resource',
+      component:()=> import('./component/application/resources/appResourceManage.vue')
+    },{
+      path:'/role/user',
+      component:()=> import('./component/role/user/roleUser.vue')
+    },{
+      path:'/user/resource',
+      component:()=> import('./component/user/resource/userResourceManage.vue')
+    },{
+      path:'/manager',
+      component:()=> import('./component/manager/managerUser.vue')
+    },{
+      path:'/manager/userAuthorization',
+      component:()=> import('./component/manager/userAuthorization.vue')
     }
   ]
 })

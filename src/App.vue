@@ -1,29 +1,65 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <nav-header></nav-header>
+    <el-row>
+      <left-menu></left-menu>     
+      <el-col :span="20">
+        <router-view></router-view>
+      </el-col> 
+    </el-row>    
   </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
+<script>
+import navHeader from './component/navHead'
+import leftMenu from './component/leftMenu'
+
+
+export default {
+  data() {
+    return {
     }
+  },
+
+  methods: {
+    startHacking() {
+      this.$notify({
+        title: 'Shhh',
+        message: 'Just be patient...',
+        duration: 6000
+      })
+    }
+  },
+
+  components: {
+    navHeader,
+    leftMenu
   }
+}
+</script>
+
+<style>
+html,
+body,
+#app {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0
+}
+
+#app {
+  font-family: Helvetica, sans-serif;
+  /* text-align: center; */
+}
+
+
+#app .el-row {
+  height: calc(100% - 80px);
+}
+
+.el-row .el-col,
+.el-row .el-menu {
+  height: 100%;
 }
 </style>

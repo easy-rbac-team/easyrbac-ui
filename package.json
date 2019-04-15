@@ -7,7 +7,9 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "core-js": "^2.6.5",
+    "element-ui": "^2.3.6",
     "vue": "^2.6.10",
     "vue-router": "^3.0.3",
     "vuex": "^3.0.1"
@@ -19,6 +21,8 @@
     "sass": "^1.18.0",
     "sass-loader": "^7.1.0",
     "typescript": "^3.4.3",
+    "vue-cli-plugin-element-ui": "^1.1.4",
+    "vue-cli-plugin-pug": "^1.0.7",
     "vue-template-compiler": "^2.5.21"
   },
   "postcss": {
