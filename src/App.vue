@@ -1,12 +1,17 @@
 <template>
   <div id="app">
+  <template v-if="!isSso">
     <nav-header></nav-header>
-    <el-row>
+    <el-row >
       <left-menu></left-menu>     
       <el-col :span="20">
         <router-view></router-view>
       </el-col> 
-    </el-row>    
+    </el-row>
+  </template>
+  <template v-else>
+    <router-view></router-view>
+  </template>
   </div>
 </template>
 
@@ -22,12 +27,12 @@ export default {
   },
 
   methods: {
-    startHacking() {
-      this.$notify({
-        title: 'Shhh',
-        message: 'Just be patient...',
-        duration: 6000
-      })
+    
+  },
+
+  computed:{
+    isSso(){
+      return window.location.hash.toUpperCase().includes("SSO")
     }
   },
 

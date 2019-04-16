@@ -1,33 +1,17 @@
 import axios from 'axios';
 import Vue from 'vue';
 import Message from 'element-ui'
-import {Config} from './service/baseConfig'
 
 const customAxios = axios.create({
-    // baseURL: '/api',
-    // // target: 'http://10.66.4.67:8099/'
-    // headers: {
-    //     // Cookie: 'MOZARTSESSIONID=4cfd8b02-52a0-4520-8777-f11c5fc05a44',
-    // },
     timeout: 15000,
     withCredentials: true
 });
-
-function getEnv(){
-    if(window.location.hostname.startsWith("localhost")){
-        return "dev"
-    }
-
-    if(window.location.host.startsWith("easyrbac")){
-        return "prod"
-    }
-}
 
 function showErro(msg:any) {
     Message.Message.error(msg);
 }
 
-const ssoUrl = Config.SsoUrl;
+const ssoUrl = process.env.VUE_APP_SSO_URL;
 
 customAxios.interceptors.response.use(function(response) {
     return response;
@@ -45,9 +29,11 @@ customAxios.interceptors.response.use(function(response) {
     }
 
     if (code === 401) {
-        //goTo(ssoUrl);
+        //goTo(ssoUrl);        
+        console.log(process.env.VUE_APP_BASE_URL)
+        console.log(process.env)
         debugger;
-        window.location.href = ssoUrl + window.location.href+"&env="+getEnv();
+        window.location.href = ssoUrl + window.location.href
     }
 
     if (code === 403) {

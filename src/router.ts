@@ -41,6 +41,11 @@ export default new Router({
     },{
       path:'/manager/userAuthorization',
       component:()=> import('./component/manager/userAuthorization.vue')
+    },
+    {
+      path:"/sso",
+      name:"SSO",
+      component:() => import('./views/Sso.vue')
     }
   ]
 })
