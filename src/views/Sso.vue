@@ -1,13 +1,14 @@
 <template>
   <div class="panel">
     <h1>EasyRBAC Login</h1>
+    <div style='height:10px'></div>
     <div style="padding: 10px;">
       <span class="labels">User Name</span>
       <input type="text" v-model="userName" class="user-input">
     </div>
     <div class="password-show">
       <span class="labels">Password</span>
-      <input type="password" id="pwd"  v-model="password" class="user-input">
+      <input type="password" id="pwd"  v-model="password" class="user-input" v-on="login">
       <span class="msg">{{msg}}</span>
     </div>
     <div class="button-group">
@@ -116,7 +117,9 @@ export default {
         return this.$route.query.from;
     }
   },
-  mounted() {}
+  mounted() {
+      this.login()
+  }
 };
 </script>
 
@@ -127,13 +130,15 @@ body {
 }
 
 .labels {
-  width: 90px;
+  width: 25%;
   background: rgba(145, 135, 135, 0.26);
   display: inline-block;
-  text-align: right;
-  padding-right: 10px;
+  text-align: center;
   border-radius: 4px;
   color: #222;
+  margin-top: 30px;
+  margin-left: 2%;
+  margin-right: 5%
 }
 
 .user-input {
@@ -141,19 +146,19 @@ body {
   background: transparent;
   border-bottom: 1px solid #999;
   outline: none;
-  width: 220px;
-  padding-left: 10px;
+  width: 60%;
+  padding-left: 2%;
+  font-size: 30px
 }
 .panel {
   font-family: "Source Sans Pro";
   font-size: 1.3em;
   position: absolute;
-  width: 400px;
+  width: 600px;
   top: 50%;
   left: 50%;
   box-sizing: border-box;
   z-index: 100;
-  height: 200px;
   transform: translate(-50%, -50%);
   padding: 20px;
   border-radius: 4px;
@@ -163,6 +168,7 @@ body {
 
 h1 {
   display: block;
+  width: 90%;
   font-size: 1em;
   -webkit-margin-before: 0.67em;
   -webkit-margin-after: 0.67em;
@@ -195,6 +201,5 @@ button:hover {
 
 .password-show {
   padding: 0px 10px 10px 10px;
-  border-bottom: 1px solid #999;
 }
 </style>

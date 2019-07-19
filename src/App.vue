@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-  <template v-if="!isSso">
+  <!-- <template v-if="!isSso">
     <nav-header></nav-header>
     <el-row >
       <left-menu></left-menu>     
@@ -11,7 +11,8 @@
   </template>
   <template v-else>
     <router-view></router-view>
-  </template>
+  </template> -->
+    <router-view></router-view>
   </div>
 </template>
 

@@ -7,7 +7,13 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path: "/user",
+      path:"/",
+      redirect:{
+        name :"admin"
+      }
+    },
+    {
+      path: "/admin/user",
       component: () => import("./component/user/userManage.vue"),
       children: [{
         path: "edit/:userId",
@@ -15,37 +21,41 @@ export default new Router({
       }]
     },
     {
-      path: '/role',
+      path: '/admin/role',
       component: () => import("./component/role/roleManage.vue")
     },
     {
-      path:"/role/roleResource",
+      path:"/admin/role/roleResource",
       component:() => import('./component/role/resource/roleResourceManage.vue')
     },
     {
-      path:'/application',
+      path:'/admin/application',
       component:()=> import('./component/application/applicationManage.vue')
     },
     {
-      path:'/app/resource',
+      path:'/admin/app/resource',
       component:()=> import('./component/application/resources/appResourceManage.vue')
     },{
-      path:'/role/user',
+      path:'/admin/role/user',
       component:()=> import('./component/role/user/roleUser.vue')
     },{
-      path:'/user/resource',
+      path:'/admin/user/resource',
       component:()=> import('./component/user/resource/userResourceManage.vue')
     },{
-      path:'/manager',
+      path:'/admin/manager',
       component:()=> import('./component/manager/managerUser.vue')
     },{
-      path:'/manager/userAuthorization',
+      path:'/admin/manager/userAuthorization',
       component:()=> import('./component/manager/userAuthorization.vue')
     },
     {
       path:"/sso",
       name:"SSO",
       component:() => import('./views/Sso.vue')
+    },{
+      path:"/admin",
+      name:"admin",
+      component:()=>import('./views/AdminBase.vue')
     }
   ]
 })
