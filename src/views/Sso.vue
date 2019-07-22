@@ -8,7 +8,7 @@
     </div>
     <div class="password-show">
       <span class="labels">Password</span>
-      <input type="password" id="pwd"  v-model="password" class="user-input" v-on="login">
+      <input type="password" id="pwd"  v-model="password" class="user-input" v-on:keyup.enter="login">
       <span class="msg">{{msg}}</span>
     </div>
     <div class="button-group">
