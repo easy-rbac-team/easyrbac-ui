@@ -29,7 +29,9 @@ interface Application{
     callbackUrl:string,
     callbackType:CallbackType,
     appScret:string,
-    callbackConfigs:CallbackConfig[]
+    callbackConfigs:CallbackConfig[],
+    iconUrl:string,
+    homePageUrl:string
 }
 
 export let appService={

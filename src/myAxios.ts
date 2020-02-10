@@ -33,7 +33,7 @@ customAxios.interceptors.response.use(function(response) {
         console.log(process.env.VUE_APP_BASE_URL)
         console.log(process.env)
         debugger;
-        window.location.href = ssoUrl + window.location.href
+        window.location.href = ssoUrl + encodeURIComponent(window.location.href)
     }
 
     if (code === 403) {

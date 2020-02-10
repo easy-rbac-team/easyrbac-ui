@@ -4,9 +4,13 @@ div.form-border
             el-form-item(label='应用名',prop="appName")
                 el-input(v-model='form.appName')         
             el-form-item(label='应用代码',prop="appCode")
-                el-input(v-model='form.appCode')                 
+                el-input(v-model='form.appCode')
+            el-form-item(label='应用图标',prop="iconUrl")
+                el-input(v-model='form.iconUrl')
+            el-form-item(label='应用主页',prop="homePageUrl")
+                el-input(v-model='form.homePageUrl')
             el-form-item(label="描述",prop="descript")
-                el-input(v-model="form.descript",type="textarea")   
+                el-input(v-model="form.descript",type="textarea")
             el-form-item(label="启用SSO",prop="enableSSO")
                 el-checkbox(v-model="form.enableSSO",style="float:left")  
             el-form-item(v-show="form.enableSSO",label='回调配置',v-for="(item,ix) in form.callbackConfigs",:key="ix")
@@ -44,6 +48,8 @@ export default {
         appCode: "",
         descript: "",
         enableSSO: false,
+        homePageUrl:"",
+        iconUrl:"",
         callbackConfigs: [
           {
             id:"-1",

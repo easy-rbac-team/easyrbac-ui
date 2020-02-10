@@ -59,6 +59,10 @@ export default new Router({
       path: "/sso",
       name: "SSO",
       component: () => import('./views/Sso.vue')
+    },{
+      path:"/dashboard",
+      name:"dashboard",
+      component:() => import("./views/Dashboard.vue")
     }
   ]
 })
