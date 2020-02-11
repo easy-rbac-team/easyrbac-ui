@@ -8,6 +8,7 @@ import searchLst from './component/commons/searchLst.vue'
 import appResource from './component/commons/appResource.vue'
 // import locale from 'element-ui/lib/locale/lang/zh-CN'
 import 'element-ui/lib/theme-chalk/index.css'
+import '@/assets/iconfont.css'
 
 Vue.use(ElementUI)
 

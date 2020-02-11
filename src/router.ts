@@ -18,6 +18,10 @@ export default new Router({
       component: () => import('./views/AdminBase.vue'),
       children: [
         {
+          path: 'user/resource',
+          component: () => import('./component/user/resource/userResourceManage.vue')
+        }, 
+        {
           path: "user",
           component: () => import("./component/user/userManage.vue"),
           children: [{
@@ -43,9 +47,6 @@ export default new Router({
         }, {
           path: 'role/user',
           component: () => import('./component/role/user/roleUser.vue')
-        }, {
-          path: 'user/resource',
-          component: () => import('./component/user/resource/userResourceManage.vue')
         }, {
           path: 'manager',
           component: () => import('./component/manager/managerUser.vue')

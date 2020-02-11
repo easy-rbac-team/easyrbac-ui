@@ -3,7 +3,8 @@ node_modules
 /dist
 
 # local env files
-.env.local
+.env.dyt
+.env.fks
 .env.*.local
 
 # Log files
@@ -20,5 +21,7 @@ yarn-error.log*
 *.sln
 *.sw?
 
-qiniuconfig_win.cfg
-upload.*
+qiniuconfig*
+upload*
+qshell*
+refreshfile.txt

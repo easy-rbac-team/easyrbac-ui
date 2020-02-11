@@ -3,7 +3,7 @@ el-row
     el-col(:span="6")
         search-lst(:searchFun="getUsers",placeholder="用户名",@itemClick="userSelect")
             template(slot-scope="props")
-                | {{props.item.userName}}
+                | {{formatUserName(props.item.userName)}}
     app-resource(:checkedKeys="checkedKeys",:disabledKeys="disabledKeys",@appSelect="appSelect",@setScope="saveChange")
 </template>
 <script>
@@ -22,6 +22,9 @@ export default {
         }
     },
     methods: {
+        formatUserName(str){
+            return str.length>10?str.substr(0,8)+"...":str
+        },
         appSelect(arg) {           
              
             let appId = arg.item.id;
