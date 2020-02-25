@@ -10,7 +10,7 @@
             |   
             .text.item(v-for="(u,index) in users", :key="u.id")                
                     span(v-bind:class="{isEnable:!u.enable,isApplication:u.accountType===1}") 
-                        | {{u.userName}}
+                        | {{formatUserName(u.userName)}}
                     el-button-group.right-buttons
                         el-button(icon="el-icon-delete",size="mini",type="danger",@click="deleteUser(index,u.id)",v-if="u.enable")
                         el-button(icon="el-icon-refresh",size="mini",type="danger",@click="recorveUser(index,u.id)",v-else="!u.enable")
@@ -54,6 +54,9 @@ export default {
             this.selectUser = user;
             this.showStatus.userInfo = true;
         },
+        formatUserName(str){
+            return str.length>10?str.substr(0,8)+"...":str
+        },
         async iconClickHandler() {
             let pageResult = await userService.getUsers(this.userName, 1, 20)
             
@@ -80,8 +83,13 @@ export default {
             }
             this.closeAll();
         },
-        recorveUser(index,userId){
-            this.$message('还未实现阿喂！');
+        async recorveUser(index,userId){
+            await userService.enableUser(userId)
+            this.$message({
+                    type: 'success',
+                    message: '启用成功!'
+                });
+            this.getUserLst()
         },
         async deleteUser(index, userId) {
             this.$confirm('确定删除此用户?', '提示', {
@@ -90,7 +98,7 @@ export default {
                 type: 'warning'
             }).then(async () => {
                 await userService.deleteUser(userId);
-                this.users.splice(index, 1)
+                this.getUserLst()
                 this.$message({
                     type: 'success',
                     message: '删除成功!'

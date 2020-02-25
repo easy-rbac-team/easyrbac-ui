@@ -40,6 +40,10 @@ export let userService = {
         let path = `${Config.BaseUrl}/user/${userId}`
         let httpResult = await axios.delete(path);
     }, 
+    async enableUser(userId:string){
+        let path = `${Config.BaseUrl}/user/${userId}`
+        let httpResult = await axios.patch(path)
+    },
     async changeResource(userId: string, appId: string, resourceIdLst: string[]) {
         let url = `${Config.BaseUrl}/user/resource/${userId}/${appId}`;        
         let httpResult = await axios.put(url, resourceIdLst);
