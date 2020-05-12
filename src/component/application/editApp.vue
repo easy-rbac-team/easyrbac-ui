@@ -16,9 +16,9 @@ div.form-border
                 el-button(type="danger",@click="removeConfig(ix)") 删除
                 el-col(:span="20")
                     el-select(v-model='item.callbackType', placeholder='SSO回调方式')
-                        el-option(label='jsonp', @value="1")
-                        el-option(label='CORS', @value="2")
-                        el-option(label='Redirect', @value="4")
+                        el-option(label='jsonp', :value="1")
+                        el-option(label='CORS', :value="2")
+                        el-option(label='Redirect', :value="4")
                 el-col(:span="20")
                     el-input(v-model='item.callbackUrl', placeholder='回调URL')                     
                 el-col(:span="20")
